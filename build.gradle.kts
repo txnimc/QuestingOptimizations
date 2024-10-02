@@ -7,11 +7,18 @@ val settings = object : TxniTemplateSettings {
 		}
 
 		override fun addFabric(deps: DependencyHandlerScope) {
-
+			deps.modImplementation("curse.maven:item-filters-309674:4838265")
+			deps.modImplementation("curse.maven:ftb-quests-fabric-438496:5543954")
+			deps.modImplementation("curse.maven:ftb-library-fabric-438495:5567590")
 		}
 
 		override fun addForge(deps: DependencyHandlerScope) {
+			deps.modImplementation("curse.maven:ftb-quests-forge-289412:5543955")
+			deps.modImplementation("curse.maven:item-filters-309674:4838266")
+			deps.modImplementation("curse.maven:ftb-library-forge-404465:5567591")
 
+			deps.modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
+			deps.modRuntimeOnly("curse.maven:ftb-teams-forge-404468:5267190")
 		}
 
 		override fun addNeo(deps: DependencyHandlerScope) {
@@ -26,6 +33,10 @@ val settings = object : TxniTemplateSettings {
 		override fun addShared(deps: DependencyContainer) {
 			if (mod.isFabric) {
 				deps.requires("fabric-api")
+				deps.requires("ftb-quests-fabric")
+			}
+			else {
+				deps.requires("ftb-quests-forge")
 			}
 		}
 
